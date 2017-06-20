@@ -1,0 +1,32 @@
+<h1>Pictures (<%= @pictures.length %>)</h1>
+<%= link_to "New Picture", "/pictures/new" %>
+
+<% @pictures.each do |picture| %>
+  <p><%= picture.title %>, <%= picture.artist %></p>
+  <%= link_to image_tag(picture.url), "/pictures/#{picture.id}" %>
+<% end %>
+
+<h1>Most recent pictures (<%= @most_recent_pictures.count %>)</h1>
+<ul>
+  <% @most_recent_pictures.each do |picture| %>
+    <li><%= picture.title %></li>
+  <% end %>
+</ul>
+
+<h1>Month old pictures (<%= @month_old_pictures.count %>)</h1>
+<ul>
+  <% @month_old_pictures.each do |picture| %>
+    <li><%= picture.title %></li>
+  <% end %>
+</ul>
+
+<h1>Pictures from 2017 (<%= @pictures_created_in_year.count %>)</h1>
+<ul>
+  <% @pictures_created_in_year.each do |picture| %>
+    <li><%= picture.title %></li>
+  <% end %>
+</ul>
+
+<!-- TO UPDATE PIC CREATED_AT DATE:
+GO TO RAILS CONSOLE:
+Picture.first.update(created_at: 2.months.ago) -->
